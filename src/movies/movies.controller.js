@@ -15,7 +15,7 @@ async function movieExists(req, res, next) {
 
 // route handlers
 // GET /movies
-async function list(req, res, next) {
+async function list(req, res, _next) {
   const { is_showing } = req.query;
   if (is_showing === 'true') {
     const data = await moviesService.getMoviesShowing();
@@ -24,16 +24,42 @@ async function list(req, res, next) {
   const data = await moviesService.list();
   res.json({ data });
 }
-
-async function read(req, res, next) {
+//GET /movies/:movieId
+async function read(_req, res, _next) {
   const data = res.locals.foundMovie;
   res.json({ data });
 }
-
-async function getTheatersPlayingMovie(req, res, next) {
+//GET /movies/:movieId/theaters
+async function getTheatersPlayingMovie(_req, res, _next) {
   const { movieId } = res.locals;
   const data = await moviesService.getTheatersShowingMovie(movieId);
   res.json({ data });
+}
+// GET /movies/:movieId/reviews
+async function getMovieReviews(_req, res, _next) {
+  const { movieId } = res.locals;
+  const reviews = await moviesService.getMovieReviews(movieId);
+  const mappedReviews = reviews.map((review, index) => {
+    const {
+      review_id,
+      content,
+      score,
+      critic_id,
+      movie_id,
+      surname,
+      preferred_name,
+      organization_name,
+    } = review;
+    return {
+      review_id,
+      content,
+      score,
+      critic_id,
+      movie_id,
+      critic: { surname, critic_id, preferred_name, organization_name },
+    };
+  });
+  res.json({ data: mappedReviews });
 }
 
 module.exports = {
@@ -41,6 +67,10 @@ module.exports = {
   getTheatersPlayingMovie: [
     asyncErrorBoundary(movieExists),
     asyncErrorBoundary(getTheatersPlayingMovie),
+  ],
+  getMovieReviews: [
+    asyncErrorBoundary(movieExists),
+    asyncErrorBoundary(getMovieReviews),
   ],
   list: asyncErrorBoundary(list),
 };

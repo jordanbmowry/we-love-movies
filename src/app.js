@@ -5,11 +5,13 @@ const cors = require('cors');
 const notFound = require('./errors/notFound');
 const errorHandler = require('./errors/errorHandler');
 const moviesRouter = require('./movies/movies.router');
+const reviewsRouter = require('./reviews/reviews.router');
 
 const app = express();
 app.use(cors());
 
 app.use('/movies', moviesRouter);
+app.use('/reviews', reviewsRouter);
 
 app.use(notFound);
 
