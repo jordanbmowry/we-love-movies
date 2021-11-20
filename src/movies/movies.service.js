@@ -39,8 +39,7 @@ function getTheatersShowingMovie(movieId) {
       'movies.movie_id'
     )
     .where('movies_theaters.is_showing', true)
-    .andWhere('movies.movie_id', movieId)
-    .groupBy('theaters.theater_id');
+    .andWhere('movies.movie_id', movieId);
 }
 
 module.exports = {
