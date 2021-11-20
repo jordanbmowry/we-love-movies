@@ -5,18 +5,18 @@ function list() {
 }
 
 function getMoviesShowing() {
-  return knex('movies')
-    .join('movies_theaters', 'movies.movie_id', 'movies_theaters.movie_id')
+  return knex('movies as m')
+    .join('movies_theaters as mt', 'm.movie_id', 'mt.movie_id')
     .select(
-      'movies.movie_id',
-      'movies.title',
-      'movies.runtime_in_minutes',
-      'movies.rating',
-      'movies.description',
-      'movies.image_url'
+      'm.movie_id',
+      'm.title',
+      'm.runtime_in_minutes',
+      'm.rating',
+      'm.description',
+      'm.image_url'
     )
-    .where('movies_theaters.is_showing', true)
-    .groupBy('movies.movie_id');
+    .where('mt.is_showing', true)
+    .groupBy('m.movie_id');
 }
 
 function read(movieId) {
@@ -24,22 +24,10 @@ function read(movieId) {
 }
 
 function getTheatersShowingMovie(movieId) {
-  return knex('movies')
-    .join('movies_theaters', 'movies.movie_id', 'movies_theaters.movie_id')
-    .join('theaters', 'theaters.theater_id', 'movies_theaters.theater_id')
-    .select(
-      'theaters.theater_id',
-      'theaters.name',
-      'theaters.address_line_1',
-      'theaters.address_line_2',
-      'theaters.city',
-      'theaters.state',
-      'theaters.zip',
-      'movies_theaters.is_showing',
-      'movies.movie_id'
-    )
-    .where('movies_theaters.is_showing', true)
-    .andWhere('movies.movie_id', movieId);
+  return knex('movies_theaters as mt')
+    .join('theaters as t', 'mt.theater_id', 't.theater_id')
+    .select('*')
+    .where({ movie_id: movieId, is_showing: true });
 }
 
 module.exports = {
