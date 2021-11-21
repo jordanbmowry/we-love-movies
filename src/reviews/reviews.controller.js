@@ -1,7 +1,6 @@
 const reviewsService = require('./reviews.service');
 const asyncErrorBoundary = require('../errors/asyncErrorBoundary');
 // validation middleware
-
 async function reviewExists(req, res, next) {
   const { reviewId } = req.params;
   const review = await reviewsService.read(reviewId);
@@ -13,8 +12,8 @@ async function reviewExists(req, res, next) {
   }
   next({ status: 404, message: `Review cannot be found.` });
 }
-const VALID_PROPERTIES = ['score', 'content'];
 
+const VALID_PROPERTIES = ['score', 'content'];
 function hasOnlyValidProperties(req, _res, next) {
   const { data = {} } = req.body;
   console.log({ data });
@@ -30,7 +29,7 @@ function hasOnlyValidProperties(req, _res, next) {
   }
   next();
 }
-
+// route handlers
 // DELETE /reviews/:reviewId
 async function destroy(_req, res, _next) {
   const { reviewId } = res.locals;

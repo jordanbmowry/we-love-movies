@@ -1,7 +1,8 @@
-function methodNotAllowed(request, response, next) {
+// handler for not allowed http verbs on routes
+function methodNotAllowed(req, _res, next) {
   next({
     status: 405,
-    message: `${request.method} not allowed for ${request.originalUrl}`,
+    message: `${req.method} not allowed for ${req.originalUrl}`,
   });
 }
 

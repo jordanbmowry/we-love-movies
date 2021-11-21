@@ -1,3 +1,4 @@
+// function to catch async errors instead of using try catch
 function asyncErrorBoundary(delegate, defaultStatus) {
   return (request, response, next) => {
     Promise.resolve()
