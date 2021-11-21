@@ -1,6 +1,6 @@
 # WeLoveMovies
 
-This project is from [Thinkful](https://www.thinkful.com/bootcamp/web-development/) and is designed to test the student's ability to both build complex servers and access data through a database. It is REST API built using Node.js, Express.js and uses Knex.js to query a postgresql database.
+This project is from [Thinkful](https://www.thinkful.com/bootcamp/web-development/) and is designed to test the student's ability to both build complex servers and access data through a database. It is a REST API built using Node.js, Express.js and uses Knex.js to query a postgresql database.
 
 ## Tech Stack
 
