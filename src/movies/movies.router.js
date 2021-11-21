@@ -4,7 +4,7 @@ const methodNotAllowed = require('../errors/methodNotAllowed');
 // GET /movies/:movieId/reviews
 router
   .route('/:movieId/reviews')
-  .get(controller.getMovieReviews)
+  .get(controller.listReviewsByMovieId)
   .all(methodNotAllowed);
 
 //GET /movies/:movieId/theaters
