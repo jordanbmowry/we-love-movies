@@ -17,6 +17,7 @@ exports.up = function (knex) {
       .references('critic_id')
       .inTable('critics')
       .onDelete('CASCADE');
+    table.timestamps(true, true);
   });
 };
 
