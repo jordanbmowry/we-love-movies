@@ -14,5 +14,5 @@ This project is from [Thinkful](https://www.thinkful.com/bootcamp/web-developmen
 | GET /movies/:movieId/theaters | Lists all theaters where the movie is playing .                        |
 | GET /movies/:movieId/reviews  | Lists all reviews for the movie including critic details.              |
 | DELETE /reviews/:reviewId     | Deletes a review depending on the url param.                           |
-| UPDATE /reviews/:reviewId     | Updates a review. "content" and "score" keys are required in json body.|
+| PUT /reviews/:reviewId     | Updates a review. "content" and "score" keys are required in json body.|
 | GET /theaters                 | Lists all theaters and movies playing at each theatre.                 |
