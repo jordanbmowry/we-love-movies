@@ -10,7 +10,7 @@ router
 //GET /movies/:movieId/theaters
 router
   .route('/:movieId/theaters')
-  .get(controller.getTheatersPlayingMovie)
+  .get(controller.getTheatersShowingMovie)
   .all(methodNotAllowed);
 //GET /movies/:movieId
 router.route('/:movieId').get(controller.read).all(methodNotAllowed);

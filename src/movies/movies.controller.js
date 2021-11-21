@@ -14,13 +14,14 @@ async function movieExists(req, res, next) {
 }
 
 // route handlers
-// GET /movies
 async function list(req, res, _next) {
   const { is_showing } = req.query;
   if (is_showing === 'true') {
+    // GET /movies?is_showing=true
     const data = await moviesService.getMoviesShowing();
     return res.json({ data });
   }
+  // GET /movies
   const data = await moviesService.list();
   res.json({ data });
 }
@@ -30,7 +31,7 @@ async function read(_req, res, _next) {
   res.json({ data });
 }
 //GET /movies/:movieId/theaters
-async function getTheatersPlayingMovie(_req, res, _next) {
+async function getTheatersShowingMovie(_req, res, _next) {
   const { movieId } = res.locals;
   const data = await moviesService.getTheatersShowingMovie(movieId);
   res.json({ data });
@@ -46,9 +47,9 @@ async function listReviewsByMovieId(req, res) {
 
 module.exports = {
   read: [asyncErrorBoundary(movieExists), read],
-  getTheatersPlayingMovie: [
+  getTheatersShowingMovie: [
     asyncErrorBoundary(movieExists),
-    asyncErrorBoundary(getTheatersPlayingMovie),
+    asyncErrorBoundary(getTheatersShowingMovie),
   ],
   listReviewsByMovieId: [
     asyncErrorBoundary(movieExists),
