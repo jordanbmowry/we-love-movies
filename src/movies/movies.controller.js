@@ -39,9 +39,7 @@ async function getTheatersShowingMovie(_req, res, _next) {
 // GET /movies/:movieId/reviews
 async function listReviewsByMovieId(req, res) {
   const { movieId } = req.params;
-  const data = await moviesService.listReviewsByMovieId(
-    Number.parseInt(movieId, 10)
-  );
+  const data = await moviesService.listReviewsByMovieId(movieId);
   res.json({ data });
 }
 
