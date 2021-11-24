@@ -45,7 +45,7 @@ create .env file
   touch .env
 ```
 
-connect to your postgresql db
+connect to your postgresql db in .env file
 
 ```.env
 DEVELOPMENT_DATABASE_URL=postgres://phrawv:QTHOwQKmpVDvEwwG-Vpx9jZsG98EOS@batyr.db.elephantsql.com/example1
