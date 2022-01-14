@@ -4,7 +4,7 @@ This project is from [Thinkful](https://www.thinkful.com/bootcamp/web-developmen
 
 ## Live Demo
 
-[WeLoveMovies](https://morning-plateau-47546.herokuapp.com//)
+[WeLoveMovies](https://morning-plateau-47546.herokuapp.com/)
 
 ## Tech Stack
 
