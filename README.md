@@ -4,7 +4,7 @@ This project is is a REST API built using Node.js, Express.js and uses Knex.js t
 
 ## Live Demo
 
-[WeLoveMovies](https://morning-plateau-47546.herokuapp.com/)
+[WeLoveMovies](https://we-love-movies-jguc.onrender.com/)
 
 ## Tech Stack
 
